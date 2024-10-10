@@ -19,8 +19,7 @@ const render = async () => {
     // const saveButtonHTML = SaveSubmission()
 
     container.innerHTML = `
-        <h1>Holiday Road</h1>
-        <div class="leftpanel">
+        <div id="leftpanel">
             <article class="choices">
                 <section class="choices__parks options">
                     ${parkOptionsHTML}
@@ -45,7 +44,7 @@ const render = async () => {
                 </section>
             </article>
         </div>
-        <div class="rightpanel">
+        <div id="rightpanel">
             <article class="itineraries">
                 <h4>Saved Itineraries</h4>
                 
