@@ -15,8 +15,9 @@ export const setAttractionChoice = (chosenAttraction) => {
 }
 
 export const setParkChoice = (chosenPark) => {
-    transientState.parkId = chosenPark
+    transientState.parkId = chosenPark.id
     console.log(transientState)
+
 }
 
 
