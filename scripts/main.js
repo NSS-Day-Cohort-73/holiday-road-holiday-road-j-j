@@ -14,8 +14,8 @@ const container = document.querySelector('#container')
 
 const render = async () => {
     const parkOptionsHTML = await Parks()
-    const attractionOptionsHTML = await GetAttractions()
-    const eateryOptionsHTML = await GetEateries()
+    // const attractionOptionsHTML = await GetAttractions()
+    // const eateryOptionsHTML = await GetEateries()
     // const saveButtonHTML = SaveSubmission()
 
     container.innerHTML = `
@@ -26,10 +26,10 @@ const render = async () => {
                     ${parkOptionsHTML}
                 </section>
                 <section class="choices__attractions options">
-                    ${attractionOptionsHTML}
+
                 </section>
                 <section class="choices__eateries options">
-                    ${eateryOptionsHTML}
+
                 </section>
             </article>
             <article class="previews">
