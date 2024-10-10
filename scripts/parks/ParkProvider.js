@@ -1,6 +1,7 @@
 
 import { setParkChoice } from "../TransientState.js"
 import { GetParks, GetPark } from "../services/ParkServices.js"
+import { PreviewPark } from "./ParkPreview.js"
 
 
 export const Parks = async () => {
@@ -31,7 +32,9 @@ const handleParkChoice = async (changeEvent) => {
         // const chosenParkChoice = thePark.id
         // setParkChoice(chosenParkChoice)
         // const data = renderParkDetails(chosenPark)
-        document.querySelector(".parkpreview").innerHTML = thePark
+        debugger
+        PreviewPark(thePark)
+
     }
 }
 
