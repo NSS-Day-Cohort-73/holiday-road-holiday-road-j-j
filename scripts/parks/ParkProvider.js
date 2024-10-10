@@ -1,9 +1,11 @@
-import { npsKey } from "../main.js"
-import { handleParkChoice } from "../TransientState.js"
 
-export const GetParks = async () => {
-    const response = await fetch(`https://developer.nps.gov/api/v1/parks?limit=1&api_key=${npsKey}`)
-    const parks = await response.json()
+import { setParkChoice } from "../TransientState.js"
+import { GetParks, GetPark } from "../services/ParkServices.js"
+
+
+export const Parks = async () => {
+
+    const parks = await GetParks()
 
     document.addEventListener("change", handleParkChoice)
 
@@ -11,7 +13,7 @@ export const GetParks = async () => {
     const parksOptions = parks.data.map(
         (item) => {
             return `
-            <option value="${item.id}">${item.fullName}</option>"
+            <option value="${item.parkCode}">${item.fullName}</option>"
             `
         }
     )
@@ -22,9 +24,15 @@ export const GetParks = async () => {
     return html
 }
 
-const handleParkChoice = (changeEvent) => {
+const handleParkChoice = async (changeEvent) => {
     if (changeEvent.target.name === "park") {
-        const chosenPark = changeEvent.target.value
-        setParkChoice(chosenPark)
+        const thePark = await GetPark(changeEvent.target.value)
+
+        // const chosenParkChoice = thePark.id
+        // setParkChoice(chosenParkChoice)
+        // const data = renderParkDetails(chosenPark)
+        document.querySelector(".parkpreview").innerHTML = thePark
     }
 }
+
+

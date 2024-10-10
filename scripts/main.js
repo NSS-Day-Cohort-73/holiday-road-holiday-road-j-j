@@ -1,8 +1,8 @@
 import Settings from './Settings.js'
 
-// import { GetParks } from './parks/ParkProvider.js'
-// import { GetAttractions } from './attractions/AttractionProvider.js'
-// import { GetEateries } from './eateries/EateryProvider.js'
+import { Parks } from './parks/ParkProvider.js'
+import { GetAttractions } from './attractions/AttractionProvider.js'
+import { GetEateries } from './eateries/EateryProvider.js'
 
 // import { SaveSubmission } from './SaveSubmission.js'
 
@@ -10,15 +10,12 @@ import Settings from './Settings.js'
 export const {npsKey, graphhopperKey, weatherKey} = Settings
 
 
-// import { SaveSubmission } from './SaveSubmission.js'
-
 const container = document.querySelector('#container')
 
 const render = async () => {
-    // const parkOptionsHTML = await GetParks()
-    // const attractionOptionsHTML = await GetAttractions()
-    // const eateryOptionsHTML = await GetEateries()
-
+    const parkOptionsHTML = await Parks()
+    const attractionOptionsHTML = await GetAttractions()
+    const eateryOptionsHTML = await GetEateries()
     // const saveButtonHTML = SaveSubmission()
 
     container.innerHTML = `
@@ -26,13 +23,13 @@ const render = async () => {
         <div class="leftpanel">
             <article class="choices">
                 <section class="choices__parks options">
-
+                    ${parkOptionsHTML}
                 </section>
                 <section class="choices__attractions options">
-                
+                    ${attractionOptionsHTML}
                 </section>
                 <section class="choices__eateries options">
-                
+                    ${eateryOptionsHTML}
                 </section>
             </article>
             <article class="previews">
@@ -58,9 +55,11 @@ const render = async () => {
 
 }
 
-
+render()
 
 document.addEventListener("newSubmission", event => {
     console.log("Regenerating HTML...")
     render()
 })
+
+
