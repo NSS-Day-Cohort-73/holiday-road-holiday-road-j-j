@@ -4,6 +4,8 @@ export const GetParks = async () => {
     const response = await fetch(`https://developer.nps.gov/api/v1/parks?limit=1&api_key=${npsKey}`)
     const parks = await response.json()
 
+    document.addEventListener("change", handleParkChoice)
+
     let html = '<select name="park"><option value="0">select...park</option>'
     const parksOptions = parks.data.map(
         (item) => {
