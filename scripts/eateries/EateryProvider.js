@@ -6,7 +6,7 @@ export const GetEateries = async () => {
     const response = await fetch("http://holidayroad.nss.team/eateries")
     const eateries = await response.json()
 
-    //event listener
+    document.addEventListener("change", handleEateryChoice)
 
     let html = '<select name="eatery"><option value="0">select...eatery</option>'
     const eateryOptions = eateries.map(
