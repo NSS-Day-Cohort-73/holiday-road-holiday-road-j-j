@@ -1,4 +1,5 @@
 import { npsKey } from "../main.js"
+import { handleParkChoice } from "../TransientState.js"
 
 export const GetParks = async () => {
     const response = await fetch(`https://developer.nps.gov/api/v1/parks?limit=1&api_key=${npsKey}`)
